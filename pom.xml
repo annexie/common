@@ -3,13 +3,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <!--<parent>-->
-    <!--<groupId>com.flightroutes.common</groupId>-->
-    <!--<artifactId>flightroutes-supom</artifactId>-->
-    <!--<version>1.0.0</version>-->
-    <!--</parent>-->
-
-    <groupId>com.xuliugen.common.commoncode</groupId>
+    <groupId>com.xuliugen.commoncode</groupId>
     <artifactId>common-code</artifactId>
     <packaging>pom</packaging>
     <version>1.0.0-SNAPSHOT</version>
@@ -28,18 +22,22 @@
         <fastjson.version>1.2.5</fastjson.version>
         <joda-time.version>2.8.1</joda-time.version>
         <guava.version>17.0</guava.version>
+
         <mybatis.version>3.2.4</mybatis.version>
         <mybatis-spring.version>1.1.1</mybatis-spring.version>
+        <jedis.version>2.5.1</jedis.version>
+        <spring.data.redis.version>1.4.1.RELEASE</spring.data.redis.version>
         <slf4j.version>1.7.12</slf4j.version>
         <servlet.version>3.0.1</servlet.version>
 
     </properties>
     <modules>
-        <module>common-code-constant</module>
-        <module>common-code-domain</module>
-        <module>common-code-exception</module>
-        <module>common-code-util</module>
-        <module>common-code-filter</module>
+        <module>constant</module>
+        <module>domain</module>
+        <module>exception</module>
+        <module>util</module>
+        <module>filter</module>
+        <module>repository</module>
     </modules>
     <description>各子系统公用的模块</description>
 
@@ -50,32 +48,26 @@
             <dependency>
                 <groupId>org.slf4j</groupId>
                 <artifactId>slf4j-api</artifactId>
-                <version>1.7.12</version>
+                <version>${slf4j.version}</version>
             </dependency>
 
             <dependency>
                 <groupId>junit</groupId>
                 <artifactId>junit</artifactId>
-                <version>4.7</version>
+                <version>${junit.version}</version>
                 <scope>test</scope>
-            </dependency>
-
-            <dependency>
-                <groupId>org.apache.commons</groupId>
-                <artifactId>commons-lang3</artifactId>
-                <version>3.4</version>
             </dependency>
 
             <dependency>
                 <groupId>javax.validation</groupId>
                 <artifactId>validation-api</artifactId>
-                <version>1.1.0.Final</version>
+                <version>${validation-api.version}</version>
             </dependency>
 
             <dependency>
                 <groupId>joda-time</groupId>
                 <artifactId>joda-time</artifactId>
-                <version>2.8.1</version>
+                <version>${joda-time.version}</version>
             </dependency>
 
             <dependency>
@@ -96,10 +88,64 @@
                 <version>${servlet.version}</version>
             </dependency>
 
+            <!--apache commons相关Jar包 开始-->
             <dependency>
                 <groupId>commons-beanutils</groupId>
                 <artifactId>commons-beanutils</artifactId>
                 <version>1.8.0</version>
+            </dependency>
+            <dependency>
+                <groupId>commons-configuration</groupId>
+                <artifactId>commons-configuration</artifactId>
+                <version>${commons-configuration.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-lang3</artifactId>
+                <version>${commons-lang3.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>commons-collections</groupId>
+                <artifactId>commons-collections</artifactId>
+                <version>${commons-collection.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>commons-fileupload</groupId>
+                <artifactId>commons-fileupload</artifactId>
+                <version>${commons-fileupload.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>commons-httpclient</groupId>
+                <artifactId>commons-httpclient</artifactId>
+                <version>3.1</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.httpcomponents</groupId>
+                <artifactId>httpclient</artifactId>
+                <version>4.5</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.httpcomponents</groupId>
+                <artifactId>httpasyncclient</artifactId>
+                <version>4.0.2</version>
+            </dependency>
+            <dependency>
+                <groupId>commons-beanutils</groupId>
+                <artifactId>commons-beanutils-core</artifactId>
+                <version>1.8.3</version>
+            </dependency>
+            <!--apache commons相关Jar包 结束-->
+
+            <!--redis相关Jar包-->
+            <dependency>
+                <groupId>redis.clients</groupId>
+                <artifactId>jedis</artifactId>
+                <version>${jedis.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.data</groupId>
+                <artifactId>spring-data-redis</artifactId>
+                <version>${spring.data.redis.version}</version>
             </dependency>
 
         </dependencies>

@@ -4,8 +4,8 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
     <modelVersion>4.0.0</modelVersion>
     <parent>
-        <groupId>com.xuliugen.commoncode</groupId>
-        <artifactId>common-code</artifactId>
+        <groupId>com.xuliugen.common</groupId>
+        <artifactId>common</artifactId>
         <version>1.0.0-SNAPSHOT</version>
     </parent>
     <artifactId>util</artifactId>
@@ -17,7 +17,7 @@
 
     <dependencies>
         <dependency>
-            <groupId>com.xuliugen.commoncode</groupId>
+            <groupId>com.xuliugen.common</groupId>
             <artifactId>constant</artifactId>
             <version>${project.parent.version}</version>
         </dependency>

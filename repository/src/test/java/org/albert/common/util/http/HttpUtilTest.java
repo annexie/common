@@ -1,5 +1,6 @@
 package org.albert.common.util.http;
 
+import com.xuliugen.common.util.http.HttpUtil;
 import org.junit.Test;
 
 import java.util.HashMap;
@@ -20,6 +21,4 @@ public class HttpUtilTest {
         String response = HttpUtil.get("http://www.tuling123.com/openapi/api", paramMap);
         System.out.println(response);
     }
-
-
 }

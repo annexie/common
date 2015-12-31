@@ -3,8 +3,8 @@
          xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
     <modelVersion>4.0.0</modelVersion>
     <parent>
-        <groupId>com.xuliugen.commoncode</groupId>
-        <artifactId>common-code</artifactId>
+        <groupId>com.xuliugen.common</groupId>
+        <artifactId>common</artifactId>
         <version>1.0.0-SNAPSHOT</version>
     </parent>
     <artifactId>repository</artifactId>
@@ -15,22 +15,22 @@
     </properties>
     <dependencies>
         <dependency>
-            <groupId>com.xuliugen.commoncode</groupId>
+            <groupId>com.xuliugen.common</groupId>
             <artifactId>domain</artifactId>
             <version>${project.parent.version}</version>
         </dependency>
         <dependency>
-            <groupId>com.xuliugen.commoncode</groupId>
+            <groupId>com.xuliugen.common</groupId>
             <artifactId>exception</artifactId>
             <version>${project.parent.version}</version>
         </dependency>
         <dependency>
-            <groupId>com.xuliugen.commoncode</groupId>
+            <groupId>com.xuliugen.common</groupId>
             <artifactId>constant</artifactId>
             <version>${project.parent.version}</version>
         </dependency>
         <dependency>
-            <groupId>com.xuliugen.commoncode</groupId>
+            <groupId>com.xuliugen.common</groupId>
             <artifactId>util</artifactId>
             <version>${project.parent.version}</version>
         </dependency>

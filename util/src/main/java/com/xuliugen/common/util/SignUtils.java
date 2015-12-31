@@ -1,6 +1,7 @@
 package com.xuliugen.common.util;
 
 import com.xuliugen.common.constant.ConstString;
+import com.xuliugen.common.util.crypto.EncryptUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

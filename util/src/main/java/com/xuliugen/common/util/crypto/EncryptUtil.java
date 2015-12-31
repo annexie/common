@@ -1,4 +1,4 @@
-package com.xuliugen.common.util;
+package com.xuliugen.common.util.crypto;
 
 import com.xuliugen.common.constant.ConstString;
 

@@ -17,8 +17,7 @@ public class ArithUtil {
      */
     private static final int DEFAULT_DOUBLE__SCALE = 15;
 
-    public static final DecimalFormat FORMAT_1 = new DecimalFormat(
-            "###########.##");
+    public static final DecimalFormat FORMAT_1 = new DecimalFormat("###########.##");
 
     /**
      * float 加法

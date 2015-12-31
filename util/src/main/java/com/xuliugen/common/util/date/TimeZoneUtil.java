@@ -1,4 +1,4 @@
-package com.xuliugen.common.util;
+package com.xuliugen.common.util.date;
 
 import java.text.ParseException;
 import java.util.*;

@@ -14,6 +14,7 @@ import java.io.IOException;
  */
 @SuppressWarnings("serial")
 public class VerifyCodeServlet extends HttpServlet {
+
     public void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         VerifyCode vc = new VerifyCode();

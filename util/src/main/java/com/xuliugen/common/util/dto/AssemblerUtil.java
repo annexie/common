@@ -1,4 +1,4 @@
-package com.xuliugen.common.util;
+package com.xuliugen.common.util.dto;
 
 import com.alibaba.fastjson.JSONObject;
 import com.xuliugen.common.constant.ConstPunctuation;

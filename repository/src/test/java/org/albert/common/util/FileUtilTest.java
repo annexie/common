@@ -6,7 +6,7 @@ import java.io.File;
 import java.io.UnsupportedEncodingException;
 import java.util.List;
 
-import com.xuliugen.common.util.FileUtil;
+import com.xuliugen.common.util.file.FileUtil;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;

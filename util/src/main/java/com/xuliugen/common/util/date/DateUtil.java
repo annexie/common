@@ -1,6 +1,5 @@
 package com.xuliugen.common.util.date;
 
-import com.xuliugen.common.util.TimeZoneUtil;
 import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.time.DateFormatUtils;

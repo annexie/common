@@ -1,5 +1,6 @@
-package com.xuliugen.common.util;
+package com.xuliugen.common.util.file;
 
+import com.xuliugen.common.util.RunningMode;
 import org.apache.commons.configuration.ConfigurationException;
 import org.apache.commons.configuration.PropertiesConfiguration;
 import org.apache.commons.configuration.reloading.FileChangedReloadingStrategy;

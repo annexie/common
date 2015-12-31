@@ -1,8 +1,4 @@
-/**
- *
- */
 package com.xuliugen.common.exception.exception.sub.business;
-
 
 import com.xuliugen.common.exception.exception.sub.SubException;
 
@@ -11,14 +7,8 @@ import com.xuliugen.common.exception.exception.sub.SubException;
  */
 public class ParameterInvalidMissingException extends SubException {
 
-    /**
-     *
-     */
     private static final long serialVersionUID = -3552716858032429014L;
 
-    /**
-     *
-     */
     public ParameterInvalidMissingException() {
         super.code = SubBusinessExceptionCodeConstants.PARAMETER_INVALID_MISSING;
     }

@@ -26,9 +26,7 @@ public class FileUtil {
 
     public static Map<String, String> FILE_TYPES = Collections
             .unmodifiableMap(new HashMap<String, String>() {
-                /**
-                 *
-                 */
+
                 private static final long serialVersionUID = -1239725062318096051L;
 
                 {
@@ -106,7 +104,6 @@ public class FileUtil {
         }
         return false;
     }
-
 
     public static byte[] read(String path) throws Exception {
         final File file = new File(path);
@@ -248,7 +245,6 @@ public class FileUtil {
         }
         return true;
     }
-
 
     public static boolean save(String path, byte[] in) {
         final File file = new File(path);

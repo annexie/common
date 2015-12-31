@@ -11,7 +11,6 @@ public class BaseEntity extends CommonEntity {
      */
     private Long id;
 
-
     public Long getId() {
         return id;
     }
@@ -32,7 +31,6 @@ public class BaseEntity extends CommonEntity {
     public int hashCode() {
         return Objects.hash(id);
     }
-
 
     public Set<Long> getIdSetBySelfCollection(Collection<? extends BaseEntity> baseEntityCollection) {
         Set<Long> idSet = new HashSet<Long>();

@@ -6,9 +6,6 @@ import org.junit.Test;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * Created by Albert.Liu on 15/10/6.
- */
 public class HttpUtilTest {
 
     @Test

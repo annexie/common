@@ -42,7 +42,6 @@ public class Response<T> implements IResponse {
         this.msg = msg;
     }
 
-
     public Response(Throwable throwable) {
         logger.error(throwable.getMessage(), throwable);
         if (throwable instanceof ValidationException || throwable instanceof IllegalArgumentException) {
@@ -54,13 +53,11 @@ public class Response<T> implements IResponse {
         }
     }
 
-
     public Response(Throwable throwable, Integer code) {
         logger.error(throwable.getMessage(), throwable);
         this.code = code;
         this.msg = throwable.getMessage();
     }
-
 
     /**
      * @param data
@@ -90,7 +87,6 @@ public class Response<T> implements IResponse {
         this.data = data;
     }
 
-
     /**
      * @return the data
      */
@@ -104,7 +100,6 @@ public class Response<T> implements IResponse {
     public void setData(T businessResult) {
         this.data = businessResult;
     }
-
 
     public int getCode() {
         return code;
@@ -149,9 +144,7 @@ public class Response<T> implements IResponse {
         AUTHEN(11000000, "身份认证失败"),
         AUTHEN_SIGN(11010000, "签名验证失败"),
 
-
         AUTHOR(12000000, "权限认证失败"),
-
 
         UNKNOWN(99999999, "未知错误");
 

@@ -1,7 +1,5 @@
 package com.xuliugen.common.util;
 
-/**
- */
 public class StringUtils {
 
     /**
@@ -33,7 +31,6 @@ public class StringUtils {
         }
         return false;
     }
-
 
     /**
      * Check that the given String is neither <code>null</code> nor of length 0.

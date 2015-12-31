@@ -4,7 +4,6 @@ import org.apache.commons.collections.CollectionUtils;
 
 import java.util.*;
 
-
 public class MapUtil<T> {
 
     private MapUtil() {
@@ -17,7 +16,6 @@ public class MapUtil<T> {
     public static MapUtil getInstance() {
         return MapUtilHolder.instance;
     }
-
 
     /**
      * 构建多值Map
@@ -38,7 +36,6 @@ public class MapUtil<T> {
         return multiSetValueMap;
     }
 
-
     /**
      * 构建多值Map
      * @param multiListValueMap
@@ -57,6 +54,5 @@ public class MapUtil<T> {
         }
         return multiListValueMap;
     }
-
 
 }

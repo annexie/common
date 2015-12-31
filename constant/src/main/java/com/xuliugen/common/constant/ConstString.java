@@ -1,7 +1,7 @@
 package com.xuliugen.common.constant;
 
 /**
- * Created by albertliu on 14-9-16.
+ * 基础的常量类
  */
 public interface ConstString {
 

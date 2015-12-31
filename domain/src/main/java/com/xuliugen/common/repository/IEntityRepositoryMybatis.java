@@ -5,5 +5,4 @@ package com.xuliugen.common.repository;
  */
 public interface IEntityRepositoryMybatis extends IEntityRepository {
 
-
 }

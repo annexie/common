@@ -25,7 +25,6 @@ public class AsyncHttpUtil {
 
     private static final Logger logger = LoggerFactory.getLogger(AsyncHttpUtil.class);
 
-
     private AsyncHttpUtil() {
 
     }

@@ -20,7 +20,6 @@ public class AssemblerUtil {
         return assembleQueryURL(queryCondition, ConstPunctuation.QUESTION);
     }
 
-
     /**
      * 根据查询条件组装查询URL，类似于: 前缀a=xx&b=xx&c=xxx
      * @param queryCondition 查询条件
@@ -79,7 +78,6 @@ public class AssemblerUtil {
         }
         return urlBuffer;
     }
-
 
     /**
      * 将Map组装成String,只组装第1层的

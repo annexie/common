@@ -1,13 +1,9 @@
 package com.xuliugen.common.exception.exception.sub.business;
 
-
 import com.xuliugen.common.exception.exception.sub.SubException;
 
 public class ParameterInvalidValueException extends SubException {
 
-    /**
-     *
-     */
     private static final long serialVersionUID = -1518043233182641729L;
 
     public ParameterInvalidValueException() {

@@ -22,7 +22,6 @@ public class EntityIdAsString extends BaseEntityIdAsString {
      */
     private Date updatedAt;
 
-
     public Integer getState() {
         return state;
     }

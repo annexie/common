@@ -41,7 +41,6 @@ public class EncryptUtil {
         return bytes;
     }
 
-
     /**
      * 对二进制进行MD5加密
      * @param data
@@ -59,7 +58,6 @@ public class EncryptUtil {
         return bytes;
     }
 
-
     /**
      * 对字符串进行MD5加密，返回加密后的字符串
      * @param data
@@ -69,7 +67,6 @@ public class EncryptUtil {
     public static String getMD5DigestInString(String data) throws IOException {
         return byte2hexNoUpperCase(getMD5Digest(data));
     }
-
 
     /**
      * 对二进制进行MD5加密，返回加密后的字符串
@@ -81,10 +78,9 @@ public class EncryptUtil {
         return byte2hexNoUpperCase(getMD5Digest(data));
     }
 
-
     /**
      * 对二进制进行MD5加密，返回加密后的字符串
-     * @param data
+     * @param byteList
      * @return 加密后的字符串
      * @throws IOException
      */
@@ -97,7 +93,6 @@ public class EncryptUtil {
         }
         return md5List;
     }
-
 
     /**
      * 二进制转十六进制字符串

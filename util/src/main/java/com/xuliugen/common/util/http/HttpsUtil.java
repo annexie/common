@@ -22,7 +22,6 @@ public class HttpsUtil {
 
     private static final Logger logger = LoggerFactory.getLogger(HttpsUtil.class);
 
-
     /**
      * @param requestUrl 请求地址
      * @param outputStr  提交的数据
@@ -31,7 +30,6 @@ public class HttpsUtil {
     public static String get(String requestUrl, String outputStr) {
         return httpsRequest(requestUrl, ConstString.HTTP_GET, outputStr);
     }
-
 
     /**
      * @param requestUrl 请求地址
@@ -42,10 +40,8 @@ public class HttpsUtil {
         return httpsRequest(requestUrl, ConstString.HTTP_POST, outputStr);
     }
 
-
     /**
      * 发送https请求
-     *
      * @param requestUrl    请求地址
      * @param requestMethod 请求方式（GET、POST）
      * @param outputStr     提交的数据

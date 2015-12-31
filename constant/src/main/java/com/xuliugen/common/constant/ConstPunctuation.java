@@ -1,13 +1,15 @@
 package com.xuliugen.common.constant;
 
 /**
- *
+ * 标点符号常量类
  */
 public interface ConstPunctuation {
+
     /**
      * : 冒号
      */
     String COLON = ":";
+
     /**
      * - 中划线
      */
@@ -24,6 +26,7 @@ public interface ConstPunctuation {
     String UNDERLINE = "_";
 
     String SLASH = "/";
+
     /**
      * , 逗号
      */

@@ -7,9 +7,6 @@ import java.util.Locale;
 
 public class I18nServiceAccessor implements Serializable {
 
-    /**
-     *
-     */
     private static final long serialVersionUID = 2426808354379252982L;
 
     private final I18nService i18nService;

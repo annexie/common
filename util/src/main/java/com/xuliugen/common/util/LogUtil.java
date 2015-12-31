@@ -22,7 +22,6 @@ public class LogUtil {
         return identityId + ConstPunctuation.MINUS + entryMethodName + ConstPunctuation.MINUS + startTime;
     }
 
-
     /**
      * 获取TraceId
      * @param identityId      标识ID

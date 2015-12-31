@@ -1,9 +1,12 @@
 package com.xuliugen.common.constant;
 
 /**
- * Created by albertliu on 14-9-25.
+ * 正则表达式常量类
  */
 public interface ConstRegex {
 
+    /**
+     * 邮件
+     */
     String REGEX_EMAIL = "[\\w!#$%&'*+/=?^_`{|}~-]+(?:\\.[\\w!#$%&'*+/=?^_`{|}~-]+)*@(?:[\\w](?:[\\w-]*[\\w])?\\.)+[\\w](?:[\\w-]*[\\w])?";
 }

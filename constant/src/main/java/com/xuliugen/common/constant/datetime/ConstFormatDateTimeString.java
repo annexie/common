@@ -30,12 +30,10 @@ public interface ConstFormatDateTimeString {
      * yyyy-MM-dd-HH
      */
     String yyyy_MM_dd_HH = "yyyy-MM-dd-HH";
-
     /**
      * mmssSSS
      */
     String mmssSSS = "mmssSSS";
-
     /**
      * HHmmssSSS
      */
@@ -57,7 +55,6 @@ public interface ConstFormatDateTimeString {
      * yyyy-MM-dd'T'HH:mm:ssZZ 2013-01-20T15:30:00+0800
      */
     String STRING11 = "yyyy-MM-dd'T'HH:mm:ssZZ";
-
     /**
      * dd/MM/yyyy
      */
@@ -86,12 +83,10 @@ public interface ConstFormatDateTimeString {
      * yyyy-MM-dd HH:mm:ssSSS
      */
     String STRING18 = "yyyy-MM-dd HH:mm:ssSSS";
-
     /**
      * yyyyMMddHHmm
      */
     String yyyyMMddHHmm = "yyyyMMddHHmm";
-
     /**
      * yyyyMMddHHmmss
      */
@@ -150,17 +145,14 @@ public interface ConstFormatDateTimeString {
     String STRING26 = "dd.MM.yyyy HH:mm:ss z"; // 23.04.2014
     // 03:08:36
     // GMT+02:00
-
     /**
      * yyyy-MM-dd'T'HH:mm:sszz 2014-07-16T13:56:39+02:00
      */
     String STRING27 = "yyyy-MM-dd'T'HH:mm:ss Z";
-
     /**
      * MMM dd, yyyy, HH:mm a Feb 10, 2014 9:29 PM
      */
     String STRING28 = "MMM dd, yyyy, HH:mm a";
-
     /**
      * yyyy-MM-dd'T'HH:mm:ss az 2014-04-20T4:29:59 PM+09:00
      */

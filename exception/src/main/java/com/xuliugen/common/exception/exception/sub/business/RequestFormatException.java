@@ -1,7 +1,3 @@
-/**
- * Copyright(C) 2012-2016 All Rights
- * Reserved.
- */
 package com.xuliugen.common.exception.exception.sub.business;
 
 /**
@@ -14,14 +10,8 @@ package com.xuliugen.common.exception.exception.sub.business;
  */
 public class RequestFormatException extends RequestParameterException {
 
-    /**
-     *
-     */
     private static final long serialVersionUID = -412139754163211866L;
 
-    /**
-     *
-     */
     public RequestFormatException() {
         super();
         // TODO Auto-generated constructor stub

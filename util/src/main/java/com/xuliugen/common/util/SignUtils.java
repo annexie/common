@@ -73,7 +73,6 @@ public class SignUtils {
         return sign;
     }
 
-
     /**
      * WeiXin签名校验
      * @param token
@@ -101,7 +100,6 @@ public class SignUtils {
         return signString;
     }
 
-
     public static String utf8Encoding(String value, String sourceCharsetName) {
         try {
             return new String(value.getBytes(sourceCharsetName),
@@ -110,7 +108,6 @@ public class SignUtils {
             throw new IllegalArgumentException(e);
         }
     }
-
 
     public static String getUUID() {
         UUID uuid = UUID.randomUUID();

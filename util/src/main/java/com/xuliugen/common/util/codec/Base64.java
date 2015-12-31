@@ -1,21 +1,3 @@
-/*
- * Licensed to the Apache Software Foundation (ASF) under one
- * or more contributor license agreements.  See the NOTICE file
- * distributed with this work for additional information
- * regarding copyright ownership.  The ASF licenses this file
- * to you under the Apache License, Version 2.0 (the
- * "License"); you may not use this file except in compliance
- * with the License.  You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing,
- * software distributed under the License is distributed on an
- * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
- * KIND, either express or implied.  See the License for the
- * specific language governing permissions and limitations
- * under the License.
- */
 package com.xuliugen.common.util.codec;
 
 /**
@@ -31,7 +13,6 @@ package com.xuliugen.common.util.codec;
  * <p/>
  * As per the Apache 2.0 license, the original copyright notice and all author and copyright information have
  * remained in tact.
- *
  * @see <a href="http://en.wikipedia.org/wiki/Base64">Wikipedia: Base 64</a>
  * @see <a href="http://www.ietf.org/rfc/rfc2045.txt">RFC 2045</a>
  * @since 0.9
@@ -43,14 +24,12 @@ public class Base64 {
      * <p/>
      * The character limit does not count the trailing CRLF, but counts all other characters, including any
      * equal signs.
-     *
      * @see <a href="http://www.ietf.org/rfc/rfc2045.txt">RFC 2045 section 6.8</a>
      */
     static final int CHUNK_SIZE = 76;
 
     /**
      * Chunk separator per RFC 2045 section 2.1.
-     *
      * @see <a href="http://www.ietf.org/rfc/rfc2045.txt">RFC 2045 section 2.1</a>
      */
     static final byte[] CHUNK_SEPARATOR = "\r\n".getBytes();
@@ -153,7 +132,6 @@ public class Base64 {
 
     /**
      * Returns whether or not the <code>octect</code> is in the base 64 alphabet.
-     *
      * @param octect The value to test
      * @return <code>true</code> if the value is defined in the the base 64 alphabet, <code>false</code> otherwise.
      */
@@ -170,10 +148,9 @@ public class Base64 {
 
     /**
      * Tests a given byte array to see if it contains only valid characters within the Base64 alphabet.
-     *
      * @param arrayOctect byte array to test
      * @return <code>true</code> if all bytes are valid characters in the Base64 alphabet or if the byte array is
-     *         empty; false, otherwise
+     * empty; false, otherwise
      */
     public static boolean isBase64(byte[] arrayOctect) {
 
@@ -195,7 +172,6 @@ public class Base64 {
 
     /**
      * Discards any whitespace from a base-64 encoded block.
-     *
      * @param data The base-64 encoded data to discard the whitespace from.
      * @return The data, less whitespace (see RFC 2045).
      */
@@ -225,7 +201,6 @@ public class Base64 {
     /**
      * Base64 encodes the specified byte array and then encodes it as a String using Shiro's preferred character
      * encoding (UTF-8).
-     *
      * @param bytes the byte array to Base64 encode.
      * @return a UTF-8 encoded String of the resulting Base64 encoded byte array.
      */
@@ -236,7 +211,6 @@ public class Base64 {
 
     /**
      * Encodes binary data using the base64 algorithm and chunks the encoded output into 76 character blocks
-     *
      * @param binaryData binary data to encodeToChars
      * @return Base64 characters chunked in 76 character blocks
      */
@@ -246,7 +220,6 @@ public class Base64 {
 
     /**
      * Encodes a byte[] containing binary data, into a byte[] containing characters in the Base64 alphabet.
-     *
      * @param pArray a byte array containing binary data
      * @return A byte array containing only Base64 character data
      */
@@ -256,7 +229,6 @@ public class Base64 {
 
     /**
      * Encodes binary data using the base64 algorithm, optionally chunking the output into 76 character blocks.
-     *
      * @param binaryData Array containing binary data to encodeToChars.
      * @param isChunked  if <code>true</code> this encoder will chunk the base64 output into 76 character blocks
      * @return Base64-encoded data.
@@ -383,7 +355,6 @@ public class Base64 {
 
     /**
      * Converts the specified UTF-8 Base64 encoded String and decodes it to a resultant UTF-8 encoded string.
-     *
      * @param base64Encoded a UTF-8 Base64 encoded String
      * @return the decoded String, UTF-8 encoded.
      */
@@ -394,7 +365,6 @@ public class Base64 {
 
     /**
      * Decodes the specified Base64 encoded byte array and returns the decoded result as a UTF-8 encoded.
-     *
      * @param base64Encoded a Base64 encoded byte array
      * @return the decoded String, UTF-8 encoded.
      */
@@ -405,7 +375,6 @@ public class Base64 {
 
     /**
      * Converts the specified UTF-8 Base64 encoded String and decodes it to a raw Base64 decoded byte array.
-     *
      * @param base64Encoded a UTF-8 Base64 encoded String
      * @return the raw Base64 decoded byte array.
      */
@@ -416,7 +385,6 @@ public class Base64 {
 
     /**
      * Decodes Base64 data into octects
-     *
      * @param base64Data Byte array containing Base64 data
      * @return Array containing decoded data.
      */
@@ -482,7 +450,6 @@ public class Base64 {
     /**
      * Discards any characters outside of the base64 alphabet, per the requirements on page 25 of RFC 2045 - "Any
      * characters outside of the base64 alphabet are to be ignored in base64 encoded data."
-     *
      * @param data The base-64 encoded data to groom
      * @return The data, less non-base64 characters (see RFC 2045).
      */

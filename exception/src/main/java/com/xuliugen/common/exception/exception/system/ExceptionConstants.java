@@ -1,8 +1,3 @@
-/**
- * Aikaka.com.cn Inc.
- * Copyright(C) 2012-2016 All Rights
- * Reserved.
- */
 package com.xuliugen.common.exception.exception.system;
 
 /**

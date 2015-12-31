@@ -1,21 +1,3 @@
-/*
- * Licensed to the Apache Software Foundation (ASF) under one
- * or more contributor license agreements.  See the NOTICE file
- * distributed with this work for additional information
- * regarding copyright ownership.  The ASF licenses this file
- * to you under the Apache License, Version 2.0 (the
- * "License"); you may not use this file except in compliance
- * with the License.  You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing,
- * software distributed under the License is distributed on an
- * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
- * KIND, either express or implied.  See the License for the
- * specific language governing permissions and limitations
- * under the License.
- */
 package com.xuliugen.common.util.codec;
 
 import java.io.File;
@@ -37,7 +19,6 @@ import java.util.Arrays;
  * <li>{@link File File}</li>
  * <li>{@link InputStream InputStream}</li>
  * </ul>
- *
  * @since 1.0
  */
 public class SimpleByteSource implements ByteSource {
@@ -52,7 +33,6 @@ public class SimpleByteSource implements ByteSource {
 
     /**
      * Creates an instance by converting the characters to a byte array (assumes UTF-8 encoding).
-     *
      * @param chars the source characters to use to create the underlying byte array.
      * @since 1.1
      */
@@ -62,7 +42,6 @@ public class SimpleByteSource implements ByteSource {
 
     /**
      * Creates an instance by converting the String to a byte array (assumes UTF-8 encoding).
-     *
      * @param string the source string to convert to a byte array (assumes UTF-8 encoding).
      * @since 1.1
      */
@@ -73,7 +52,6 @@ public class SimpleByteSource implements ByteSource {
     /**
      * Creates an instance using the sources bytes directly - it does not create a copy of the
      * argument's byte array.
-     *
      * @param source the source to use to populate the underlying byte array.
      * @since 1.1
      */
@@ -83,7 +61,6 @@ public class SimpleByteSource implements ByteSource {
 
     /**
      * Creates an instance by converting the file to a byte array.
-     *
      * @param file the file from which to acquire bytes.
      * @since 1.1
      */
@@ -93,7 +70,6 @@ public class SimpleByteSource implements ByteSource {
 
     /**
      * Creates an instance by converting the stream to a byte array.
-     *
      * @param stream the stream from which to acquire bytes.
      * @since 1.1
      */
@@ -115,10 +91,9 @@ public class SimpleByteSource implements ByteSource {
      * <li>{@link File}</li>
      * </li>{@link InputStream}</li>
      * </ul>
-     *
      * @param o the object to test to see if it can be easily converted to bytes by instances of this class.
      * @return {@code true} if the specified object can be easily converted to bytes by instances of this class,
-     *         {@code false} otherwise.
+     * {@code false} otherwise.
      * @since 1.2
      */
     public static boolean isCompatible(Object o) {
@@ -135,14 +110,14 @@ public class SimpleByteSource implements ByteSource {
     }
 
     public String toHex() {
-        if ( this.cachedHex == null ) {
+        if (this.cachedHex == null) {
             this.cachedHex = Hex.encodeToString(getBytes());
         }
         return this.cachedHex;
     }
 
     public String toBase64() {
-        if ( this.cachedBase64 == null ) {
+        if (this.cachedBase64 == null) {
             this.cachedBase64 = Base64.encodeToString(getBytes());
         }
         return this.cachedBase64;

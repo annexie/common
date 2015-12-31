@@ -1,6 +1,3 @@
-/**
- *
- */
 package com.xuliugen.common.exception.exception.sub.business;
 
 /**
@@ -8,14 +5,8 @@ package com.xuliugen.common.exception.exception.sub.business;
  */
 public class ServiceDisableException extends OPFBaseException {
 
-    /**
-     *
-     */
     private static final long serialVersionUID = 1550687018398356455L;
 
-    /**
-     *
-     */
     public ServiceDisableException() {
         // TODO Auto-generated constructor stub
     }

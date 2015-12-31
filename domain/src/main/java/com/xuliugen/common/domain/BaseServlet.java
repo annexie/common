@@ -9,7 +9,6 @@ import java.lang.reflect.Method;
 
 /**
  * BaseServlet用来作为其它Servlet的父类
- * <p></p>
  * 一个类多个请求处理方法，每个请求处理方法的原型与service相同！ 原型 = 返回值类型 + 方法名称 + 参数列表
  * Created by xuliugen on 15/10/18.
  */

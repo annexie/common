@@ -112,7 +112,7 @@ public abstract class I18nServiceSupport {
      * <code>formatMessage</code>, resolving any argument placeholders found in
      * them. Subclasses may override this method to plug in custom processing of
      * default messages.
-     * @param errorMessage the passed-in default message String
+     * @param defaultMessage the passed-in default message String
      * @param args         array of arguments that will be filled in for params within
      *                     the message, or <code>null</code> if none.
      * @param locale       the Locale used for formatting

@@ -5,7 +5,6 @@ import com.xuliugen.common.exception.exception.sub.SubException;
 
 import java.util.Set;
 
-
 public class SystemException extends BaseException {
 
     private static final long serialVersionUID = -1212272784792901500L;

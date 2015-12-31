@@ -1,7 +1,3 @@
-/**
- * Copyright(C) 2012-2016 All Rights
- * Reserved.
- */
 package com.xuliugen.common.exception.exception.sub.business;
 
 /**
@@ -14,9 +10,6 @@ package com.xuliugen.common.exception.exception.sub.business;
  */
 public class RequestAuthenticationException extends RequestCheckingException {
 
-    /**
-     *
-     */
     private static final long serialVersionUID = -8633852296712491459L;
 
     /**

@@ -16,7 +16,6 @@ import java.util.*;
 
 public class DateUtil {
 
-
     /**
      * :
      */
@@ -144,7 +143,6 @@ public class DateUtil {
      * yyyy-MM-dd HH:mm:ssSSS
      */
     public final static String DATE_FROMAT_STRING18 = "yyyy-MM-dd HH:mm:ssSSS";
-
 
     public final static String FROMAT_yyyyMMddHHmmssSSS = "yyyyMMddHHmmssSSS";
     /**

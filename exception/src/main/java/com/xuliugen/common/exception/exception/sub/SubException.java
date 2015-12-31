@@ -5,9 +5,6 @@ package com.xuliugen.common.exception.exception.sub;
  */
 public class SubException extends RuntimeException {
 
-    /**
-     *
-     */
     private static final long serialVersionUID = 2548627170033598649L;
 
     /**
@@ -35,9 +32,6 @@ public class SubException extends RuntimeException {
      */
     public Object[] solutionParameters;
 
-    /**
-     *
-     */
     public SubException() {
         super();
     }
@@ -54,9 +48,6 @@ public class SubException extends RuntimeException {
         this.messageParameters = messageParameters;
     }
 
-    /**
-     * @param subExceptions
-     */
     public SubException(Object[] messageParameters, Object[] solutionParameters) {
         super();
         this.messageParameters = messageParameters;

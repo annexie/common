@@ -65,7 +65,6 @@ public class HttpUtil {
         return getWithEncodeURL(url);
     }
 
-
     /**
      * 使用没有UTF-8编码的URL执行Get请求
      * @param url
@@ -168,7 +167,6 @@ public class HttpUtil {
         return null;
     }
 
-
     /**
      * @param httpURLEncode :请求URL，URL已经UTF-8编码过
      * @return 返回结果
@@ -214,7 +212,6 @@ public class HttpUtil {
         }
         return responseText;
     }
-
 
     /**
      * 以流的形式传输文本
@@ -280,7 +277,6 @@ public class HttpUtil {
         return responseText;
     }
 
-
     /**
      * 以一个Key和Value的形式传输请求参数
      * @param url
@@ -314,7 +310,6 @@ public class HttpUtil {
         return responseText;
     }
 
-
     /**
      * 以流的形式post普通文本
      * @param url
@@ -323,7 +318,6 @@ public class HttpUtil {
      * @param readTimeout
      * @return
      */
-
     public static String postWithText(String url, String text, int connectTimeout, int readTimeout) {
         HttpClient httpClient = new HttpClient();
         HttpConnectionManagerParams manager = httpClient.getHttpConnectionManager().getParams();
@@ -381,7 +375,6 @@ public class HttpUtil {
         return result;
     }
 
-
     private static String getCharSet(String content) {
         String regex = ".*charset=([^;]*).*";
         Pattern pattern = Pattern.compile(regex);
@@ -400,7 +393,6 @@ public class HttpUtil {
         return StringUtils.defaultIfBlank(getCharSet(charset.getValue()), ConstString.STRING_ENCODING_UTF8);
     }
 
-
     public static String convertParamMapToStringWithEncode(Map<String, Object> paramKeyAndValueMap) {
         return convertParamMapToString(paramKeyAndValueMap, true);
     }
@@ -408,7 +400,6 @@ public class HttpUtil {
     public static String convertParamMapToString(Map<String, Object> paramKeyAndValueMap) {
         return convertParamMapToString(paramKeyAndValueMap, false);
     }
-
 
     private static String convertParamMapToString(Map<String, Object> paramKeyAndValueMap, boolean encode) {
         StringBuffer stringBuffer = new StringBuffer();

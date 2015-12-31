@@ -36,11 +36,8 @@ public class ReflectionUtils {
             }
 
         }
-
         return declaredFields;
-
     }
-
 
     public static void reflect(Object obj) {
         if (obj == null) return;
@@ -80,6 +77,5 @@ public class ReflectionUtils {
         }
         System.out.println();
     }
-
 
 }

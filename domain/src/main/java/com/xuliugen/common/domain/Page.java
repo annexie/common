@@ -29,7 +29,6 @@ public class Page<T> implements Serializable {
 
     private long resultCount; // 总记录数
 
-
     public Page(int pageSize, long start, long currentPage) {
         this.pageSize = pageSize;
         this.start = start;
@@ -173,7 +172,6 @@ public class Page<T> implements Serializable {
         return currentPage * pageSize;
     }
 
-
     /**
      * 获取任一页第一条数据在数据集的位置.
      * @param currentPage 从0开始的页号
@@ -194,7 +192,6 @@ public class Page<T> implements Serializable {
         this.start = start;
         this.currentPage = currentPage;
     }
-
 
     @Override
     public String toString() {

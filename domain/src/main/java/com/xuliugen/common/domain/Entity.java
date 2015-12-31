@@ -19,7 +19,6 @@ public class Entity extends BaseEntity {
      */
     private Date updatedAt;
 
-
     public Integer getState() {
         return state;
     }

@@ -6,7 +6,6 @@ import java.io.File;
 import java.io.UnsupportedEncodingException;
 import java.util.List;
 
-import util.file.FileUtil;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;

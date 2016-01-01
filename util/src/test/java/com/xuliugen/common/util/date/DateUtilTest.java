@@ -1,6 +1,5 @@
 package com.xuliugen.common.util.date;
 
-import util.date.DateUtil;
 import org.junit.Test;
 
 public class DateUtilTest {

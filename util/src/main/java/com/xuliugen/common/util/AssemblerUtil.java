@@ -1,4 +1,4 @@
-package com.xuliugen.common.util.dto;
+package com.xuliugen.common.util;
 
 import com.alibaba.fastjson.JSONObject;
 import com.xuliugen.common.constant.ConstPunctuation;
@@ -7,7 +7,7 @@ import org.apache.commons.lang3.StringUtils;
 import java.util.Map;
 
 /**
- * 数据传输对象转化为实体对象的转换工具类
+ * 组装工具类，包含URL组装、Map组装
  */
 public class AssemblerUtil {
 

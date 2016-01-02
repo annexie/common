@@ -7,18 +7,20 @@ import org.apache.commons.beanutils.converters.DateConverter;
 import java.util.Map;
 
 /**
+ * 实体的转化工具类
  * Created by xuliugen on 15/10/18.
  */
 public class BeanConvertUtils {
 
     /**
-     * 把map转换成对象
+     * 把map转换成JavaBean对象,要求map中的可以、名称与JavaBean中的属性相对应
+     * <p/>
+     * 如果一个map中有多个javaBean中对应的属性，则同样可以实现对不同JavaBean的映射
      * @param map
      * @param clazz
      * @param <T>
      * @return 把map转换成对象
      */
-    @SuppressWarnings("rawtypes")
     public static <T> T MaptoBean(Map map, Class<T> clazz) {
         try {
             /*

@@ -384,7 +384,7 @@ public class TimeZoneUtil {
     public static Calendar transformTimeZone(String sourceDateString,
                                              TimeZone sourceTimeZone, TimeZone targetTimeZone)
             throws ParseException {
-        Date sourceDate = DateUtil.transformStringDate(sourceDateString);
+        Date sourceDate = DateUtils.transformStringDate(sourceDateString);
         Calendar calendar = transformTimeZone(sourceDate, sourceTimeZone,
                 targetTimeZone);
         return calendar;
@@ -437,7 +437,7 @@ public class TimeZoneUtil {
      */
     public static Calendar transformTimeZoneToUTC(String sourceTime,
                                                   TimeZone sourceTimeZone) throws ParseException {
-        Date sourceDate = DateUtil.transformStringDate(sourceTime);
+        Date sourceDate = DateUtils.transformStringDate(sourceTime);
         return transformTimeZone(sourceDate, sourceTimeZone,
                 TimeZoneUtil.getUTC());
     }
@@ -487,7 +487,7 @@ public class TimeZoneUtil {
      */
     public static Calendar transformChinaTimeZoneToPST(String sourceDate)
             throws ParseException {
-        return transformTimeZone(DateUtil.transformStringDate(sourceDate),
+        return transformTimeZone(DateUtils.transformStringDate(sourceDate),
                 TimeZoneUtil.getChinaTimeZone(), TimeZoneUtil.getPST());
     }
 
@@ -511,7 +511,7 @@ public class TimeZoneUtil {
      */
     public static Calendar transformPSTToChinaTimeZone(String sourceDate)
             throws ParseException {
-        return transformTimeZone(DateUtil.transformStringDate(sourceDate),
+        return transformTimeZone(DateUtils.transformStringDate(sourceDate),
                 TimeZoneUtil.getPST(), TimeZoneUtil.getChinaTimeZone());
     }
 
@@ -524,7 +524,7 @@ public class TimeZoneUtil {
      * @return
      */
     public static boolean isDaylightTimeInUSA() {
-        return isDaylightTimeInUSA(DateUtil.getNow());
+        return isDaylightTimeInUSA(DateUtils.getNow());
     }
 
     /**
@@ -540,7 +540,7 @@ public class TimeZoneUtil {
      */
     public static boolean isDaylightTimeInUSA(String dateString)
             throws ParseException {
-        Date date = DateUtil.transformStringDate(dateString);
+        Date date = DateUtils.transformStringDate(dateString);
         return isDaylightTimeInUSA(date);
     }
 
@@ -551,10 +551,10 @@ public class TimeZoneUtil {
         int year = ca.get(Calendar.YEAR);
         // int month = ca.get(Calendar.MONTH) + 1;
         // 3月的第二个星期日
-        Calendar daylightSavingTimeBeginDay = DateUtil.getSecondSundayOfMonth(
+        Calendar daylightSavingTimeBeginDay = DateUtils.getSecondSundayOfMonth(
                 year, 3);
         // 11月的第一个星期日
-        Calendar daylightSavingTimeEndDay = DateUtil.getFirstSundayOfMonth(
+        Calendar daylightSavingTimeEndDay = DateUtils.getFirstSundayOfMonth(
                 year, 11);
 
         // System.out.println(Format(format18,
@@ -586,7 +586,7 @@ public class TimeZoneUtil {
      */
     public static boolean isInDaylightTime(TimeZone timeZone, String dateString)
             throws ParseException {
-        Date date = DateUtil.transformStringDate(dateString);
+        Date date = DateUtils.transformStringDate(dateString);
         return timeZone.inDaylightTime(date);
     }
 
@@ -610,7 +610,7 @@ public class TimeZoneUtil {
      */
     public static boolean isInDaylightTime(String dateString)
             throws ParseException {
-        Date date = DateUtil.transformStringDate(dateString);
+        Date date = DateUtils.transformStringDate(dateString);
         return TimeZone.getDefault().inDaylightTime(date);
     }
 

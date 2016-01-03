@@ -3,18 +3,18 @@ package com.xuliugen.common.util.date;
 import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.time.DateFormatUtils;
-import org.apache.commons.lang3.time.DateUtils;
 import org.apache.commons.lang3.time.DurationFormatUtils;
 
 import javax.xml.datatype.DatatypeFactory;
 import javax.xml.datatype.XMLGregorianCalendar;
+import java.security.InvalidParameterException;
 import java.sql.Timestamp;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
-public class DateUtil {
+public class DateUtils {
 
     /**
      * :
@@ -286,6 +286,23 @@ public class DateUtil {
      */
     public final static String[] Holidays = new String[]{"1-1", "5-5-1",
             "7-4", "9-1-1", "10-4-1", "11-4-4", "12-25"};
+
+    /**
+     * 最小日期，设定为1000年1月1日
+     */
+    public static final Date MIN_DATE = date(1000, 1, 1);
+    /**
+     * 最大日期，设定为8888年1月1日
+     */
+    public static final Date MAX_DATE = date(8888, 1, 1);
+    private static final long MILLIS_IN_A_SECOND = 1000;
+    private static final long SECONDS_IN_A_MINUTE = 60;
+    private static final long MINUTES_IN_AN_HOUR = 60;
+    private static final long HOURS_IN_A_DAY = 24;
+
+    //private static final int[] daysInMonth = new int[] { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+    private static final int DAYS_IN_A_WEEK = 7;
+    private static final int MONTHS_IN_A_YEAR = 12;
 
     /**
      * 将任意格式的String类型的日期转换成Date
@@ -620,20 +637,20 @@ public class DateUtil {
     public static String transformToPSTDateString(String dateString)
             throws ParseException {
 
-        Date sourceDateTime = DateUtil.transformStringDate(dateString);
+        Date sourceDateTime = DateUtils.transformStringDate(dateString);
 
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(sourceDateTime);
 
         // 如果输入的时间不是1970-01-01 00:00:00，则对输入的时间进行时区转化处理
         if (sourceDateTime.getTime() > 0) {
-            long sourceDateOffSet = DateUtil
+            long sourceDateOffSet = DateUtils
                     .getPSTTimeZoneOffSetInMillsecond(calendar);
 
             sourceDateTime.setTime(sourceDateTime.getTime() - sourceDateOffSet);
         }
 
-        String targetDateTimePST = DateUtil.Format(DateUtil.format_yyyyMMdd_HHmmss,
+        String targetDateTimePST = DateUtils.Format(DateUtils.format_yyyyMMdd_HHmmss,
                 sourceDateTime);
 
         return targetDateTimePST;
@@ -814,7 +831,7 @@ public class DateUtil {
         if (time == null) {
             date = new Date();
         } else {
-            date = DateUtil.rFormat(DateUtil.format_yyyyMMdd, time);
+            date = DateUtils.rFormat(DateUtils.format_yyyyMMdd, time);
         }
         GregorianCalendar c = new GregorianCalendar();
         c.setTime(date);
@@ -1054,7 +1071,7 @@ public class DateUtil {
     }
 
     public static String getISO8601Now() {
-        return DateFormatUtils.format(DateUtil.getNow(),
+        return DateFormatUtils.format(DateUtils.getNow(),
                 "yyyy-MM-dd HH:mm:ss ZZ");
     }
 
@@ -1248,8 +1265,8 @@ public class DateUtil {
     }
 
     public static String preDay(int n, DateFormat format) {
-        Date dateNow = DateUtil.getNow();
-        Date datePre = DateUtils.addDays(dateNow, 0 - n);
+        Date dateNow = DateUtils.getNow();
+        Date datePre = org.apache.commons.lang3.time.DateUtils.addDays(dateNow, 0 - n);
         return Format(format, datePre);
     }
 
@@ -1268,7 +1285,7 @@ public class DateUtil {
             }
             pred++;
         }
-        return Format(DateUtil.format_yyyyMMdd, preDate);
+        return Format(DateUtils.format_yyyyMMdd, preDate);
     }
 
     public static String preDays(int n) {
@@ -1282,7 +1299,7 @@ public class DateUtil {
     public static String preDays(String time, DateFormat format, int n) {
         Calendar ca = Calendar.getInstance();
         ca.clear();
-        ca.setTime(DateUtil.parseDateStringToDate(DateUtil.format_yyyyMMdd, time));
+        ca.setTime(DateUtils.parseDateStringToDate(DateUtils.format_yyyyMMdd, time));
         ca.add(Calendar.DAY_OF_MONTH, 0 - n);
         return Format(format, ca.getTime());
     }
@@ -1306,7 +1323,7 @@ public class DateUtil {
     public static String preHour(String time, DateFormat format, int n) {
         Calendar ca = Calendar.getInstance();
         ca.clear();
-        ca.setTime(DateUtil.parseDateStringToDate(format, time));
+        ca.setTime(DateUtils.parseDateStringToDate(format, time));
         ca.add(Calendar.HOUR_OF_DAY, 0 - n);
         return Format(format, ca.getTime());
     }
@@ -1556,12 +1573,11 @@ public class DateUtil {
 
     /**
      * 将指定格式的String类型的日期转换成Date
-     * @param format     要转换的格式，应该与要转换的日期格式对应
-     * @param dateString 要转换的日期
+     * @param format 要转换的格式，应该与要转换的日期格式对应
+     * @param time   要转换的日期
      * @return
      */
-    public static Date parseDateStringToDate(DateFormat format, String time,
-                                             TimeZone timeZone) {
+    public static Date parseDateStringToDate(DateFormat format, String time, TimeZone timeZone) {
         synchronized (format) {
             try {
                 format.setTimeZone(timeZone);
@@ -1652,7 +1668,7 @@ public class DateUtil {
      */
     public static String getFirstDayOfMonth(String time, DateFormat format) {
         Calendar c = new GregorianCalendar();
-        c.setTime(DateUtil.rFormat(format, time));
+        c.setTime(DateUtils.rFormat(format, time));
         c.set(Calendar.DAY_OF_MONTH, 1);
         return Format(format, c.getTime());
     }
@@ -1663,7 +1679,7 @@ public class DateUtil {
      */
     public static String getLastDayOfMonth(String time, DateFormat format) {
         Calendar c = new GregorianCalendar();
-        c.setTime(DateUtil.rFormat(format, time));
+        c.setTime(DateUtils.rFormat(format, time));
         c.set(Calendar.DAY_OF_MONTH, 1);
         c.add(Calendar.MONTH, 1);
         c.add(Calendar.DAY_OF_MONTH, -1);
@@ -1677,8 +1693,8 @@ public class DateUtil {
      * @return
      */
     public static String aftDays(int n, String time) {
-        Date date = rFormat(DateUtil.format_yyyyMMdd, time);
-        Date dateAfter = DateUtils.addDays(date, n);
+        Date date = rFormat(DateUtils.format_yyyyMMdd, time);
+        Date dateAfter = org.apache.commons.lang3.time.DateUtils.addDays(date, n);
         return Format(format_yyyyMMdd, dateAfter);
     }
 
@@ -1694,10 +1710,10 @@ public class DateUtil {
         // ca.setTimeInMillis(date.getTime() + (long) n * 24 * 60 * 60 * 1000);
         // return new Date(ca.getTime().getTime());
         // 以上代码可能会因为夏令时和物冬令时的切换造成：用带00:00:00格式的日期进行换算时在夏令时会多出一天来.
-        // 比如： Date date1=DateUtil.getDateFromStr(DateUtil.format_yyyyMMdd,
-        // "2014-03-15"); Date date11= DateUtil.aftDays(-7,date1);
+        // 比如： Date date1=DateUtils.getDateFromStr(DateUtils.format_yyyyMMdd,
+        // "2014-03-15"); Date date11= DateUtils.aftDays(-7,date1);
         // 的输出结果是2014-03-07,而不是2014-03-08,所有替换成使用org.apache.commons.lang.time.DateUtils进行转换
-        return DateUtils.addDays(date, n);
+        return org.apache.commons.lang3.time.DateUtils.addDays(date, n);
     }
 
     /**
@@ -1706,7 +1722,7 @@ public class DateUtil {
      */
     public static String aftMonths(String time, DateFormat format, int m) {
         Calendar c = new GregorianCalendar();
-        c.setTime(DateUtil.rFormat(format, time));
+        c.setTime(DateUtils.rFormat(format, time));
         c.add(Calendar.MONTH, m);
         return Format(format, c.getTime());
     }
@@ -1809,7 +1825,7 @@ public class DateUtil {
                 year = date.substring(0, 4);
             } else if (date.matches("[A-Za-z]+$")
                     && 0 == Integer.parseInt(month)) {
-                month = DateUtil.TransferMonth(date);
+                month = DateUtils.TransferMonth(date);
             } else if (date.matches("^\\d{1,2}")) {
                 day = date;
             }
@@ -1901,9 +1917,9 @@ public class DateUtil {
         ca.set(Calendar.YEAR, year);
         ca.set(Calendar.WEEK_OF_YEAR, week);
         ca.set(Calendar.DAY_OF_WEEK, Calendar.SUNDAY);
-        date[0] = DateUtil.Format(DateUtil.format_yyyyMMdd, ca.getTime());
+        date[0] = DateUtils.Format(DateUtils.format_yyyyMMdd, ca.getTime());
         ca.set(Calendar.DATE, ca.get(Calendar.DATE) + 6);
-        date[1] = DateUtil.Format(DateUtil.format_yyyyMMdd, ca.getTime());
+        date[1] = DateUtils.Format(DateUtils.format_yyyyMMdd, ca.getTime());
         return date;
     }
 
@@ -1913,7 +1929,7 @@ public class DateUtil {
      * @return 返回格式为yyyy-xx,比如2014-3,2014-23
      */
     public static String getWeekOfYear(String date) {
-        Date d = DateUtil.getDateFromStr(DateUtil.format_yyyyMMdd, date);
+        Date d = DateUtils.getDateFromStr(DateUtils.format_yyyyMMdd, date);
         Calendar ca = Calendar.getInstance();
         ca.setTimeInMillis(d.getTime());
         int month = ca.get(Calendar.MONTH);
@@ -1934,9 +1950,9 @@ public class DateUtil {
         List<String> dates = new ArrayList<String>();
         dates.add(beginDate);
         for (int i = 0; i < 100; i++) {
-            beginDate = DateUtil.aftDays(7 * week, beginDate);
+            beginDate = DateUtils.aftDays(7 * week, beginDate);
             boolean isBefore = beginDate.equals(endDate)
-                    || DateUtil.parseDateStringToDate(DateUtil.format_yyyyMMdd,
+                    || DateUtils.parseDateStringToDate(DateUtils.format_yyyyMMdd,
                     beginDate).before(
                     parseDateStringToDate(format_yyyyMMdd, endDate));
             if (isBefore) {
@@ -1950,8 +1966,8 @@ public class DateUtil {
 
     public static List<String> splitByDay(String sdate, String edate) {
         List<String> days = new ArrayList<String>();
-        for (int i = 0; DateUtil.preDays(sdate, format_yyyyMMdd, i).compareTo(edate) <= 0; i--) {
-            days.add(DateUtil.preDays(sdate, format_yyyyMMdd, i));
+        for (int i = 0; DateUtils.preDays(sdate, format_yyyyMMdd, i).compareTo(edate) <= 0; i--) {
+            days.add(DateUtils.preDays(sdate, format_yyyyMMdd, i));
         }
         return days;
     }
@@ -2148,5 +2164,423 @@ public class DateUtil {
             return time.substring(0, 7);
         }
         return "";
+    }
+
+    /**
+     * 根据年月日构建日期对象。注意月份是从1开始计数的，即month为1代表1月份。
+     * @param year  年
+     * @param month 月。注意1代表1月份，依此类推。
+     * @param day   日
+     * @return 一个日期
+     */
+    public static Date date(int year, int month, int day) {
+        Calendar calendar = Calendar.getInstance();
+        calendar.set(year, month - 1, day, 0, 0, 0);
+        calendar.set(Calendar.MILLISECOND, 0);
+        return calendar.getTime();
+    }
+
+    /**
+     * 根据年月日构建日期对象。注意月份是从1开始计数的，即month为1代表1月份。
+     * @param year   年
+     * @param month  月。注意1代表1月份，依此类推。
+     * @param day    日
+     * @param hour   时
+     * @param minute 分
+     * @param second 秒
+     * @return 一个日期
+     */
+    public static Date date(int year, int month, int day,
+                            int hour, int minute, int second) {
+        Calendar calendar = Calendar.getInstance();
+        calendar.set(year, month - 1, day, hour, minute, second);
+        calendar.set(Calendar.MILLISECOND, 0);
+        return calendar.getTime();
+    }
+
+    /**
+     * 计算两个日期（不包括时间）之间相差的周年数
+     * @param date1 第一个日期
+     * @param date2 第二个日期
+     * @return 两个日期之间相隔的周年数
+     */
+    public static int getYearDiff(Date date1, Date date2) {
+        if (date1 == null || date2 == null) {
+            throw new InvalidParameterException(
+                    "date1 and date2 cannot be null!");
+        }
+        if (date1.after(date2)) {
+            throw new InvalidParameterException("date1 cannot be after date2!");
+        }
+
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(date1);
+        int year1 = calendar.get(Calendar.YEAR);
+        int month1 = calendar.get(Calendar.MONTH);
+        int day1 = calendar.get(Calendar.DATE);
+
+        calendar.setTime(date2);
+        int year2 = calendar.get(Calendar.YEAR);
+        int month2 = calendar.get(Calendar.MONTH);
+        int day2 = calendar.get(Calendar.DATE);
+
+        int result = year2 - year1;
+        if (month2 < month1) {
+            result--;
+        } else if (month2 == month1 && day2 < day1) {
+            result--;
+        }
+        return result;
+    }
+
+    /**
+     * 计算两个日期（不包括时间）之间相差的整月数
+     * @param date1 第一个日期
+     * @param date2 第二个日期
+     * @return 两个日期之间相隔的整月数
+     */
+    public static int getMonthDiff(Date date1, Date date2) {
+        if (date1 == null || date2 == null) {
+            throw new InvalidParameterException(
+                    "date1 and date2 cannot be null!");
+        }
+        if (date1.after(date2)) {
+            throw new InvalidParameterException("date1 cannot be after date2!");
+        }
+
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(date1);
+        int year1 = calendar.get(Calendar.YEAR);
+        int month1 = calendar.get(Calendar.MONTH);
+        int day1 = calendar.get(Calendar.DATE);
+
+        calendar.setTime(date2);
+        int year2 = calendar.get(Calendar.YEAR);
+        int month2 = calendar.get(Calendar.MONTH);
+        int day2 = calendar.get(Calendar.DATE);
+
+        int months = 0;
+        if (day2 >= day1) {
+            months = month2 - month1;
+        } else {
+            months = month2 - month1 - 1;
+        }
+        return (year2 - year1) * MONTHS_IN_A_YEAR + months;
+    }
+
+    /**
+     * 统计两个日期之间包含的天数。包含date1，但不包含date2
+     * @param date1 第一个日期
+     * @param date2 第二个日期
+     * @return 两个日期之间相隔的整天数
+     */
+    public static int getDayDiff(Date date1, Date date2) {
+        if (date1 == null || date2 == null) {
+            throw new InvalidParameterException(
+                    "date1 and date2 cannot be null!");
+        }
+        Date startDate = org.apache.commons.lang3.time.DateUtils.truncate(
+                date1, Calendar.DATE);
+        Date endDate = org.apache.commons.lang3.time.DateUtils.truncate(date2,
+                Calendar.DATE);
+        if (startDate.after(endDate)) {
+            throw new InvalidParameterException("date1 cannot be after date2!");
+        }
+        long millSecondsInOneDay = HOURS_IN_A_DAY * MINUTES_IN_AN_HOUR
+                * SECONDS_IN_A_MINUTE * MILLIS_IN_A_SECOND;
+        return (int) ((endDate.getTime() - startDate.getTime()) / millSecondsInOneDay);
+    }
+
+    /**
+     * 计算time2比time1晚多少分钟，忽略日期部分
+     * @param time1 第一个时间
+     * @param time2 第二个时间
+     * @return 两个时间之间相隔的分钟数
+     */
+    public static int getMinuteDiffByTime(Date time1, Date time2) {
+        long startMil = 0;
+        long endMil = 0;
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(time1);
+        calendar.set(1900, 1, 1);
+        startMil = calendar.getTimeInMillis();
+        calendar.setTime(time2);
+        calendar.set(1900, 1, 1);
+        endMil = calendar.getTimeInMillis();
+        return (int) ((endMil - startMil) / MILLIS_IN_A_SECOND / SECONDS_IN_A_MINUTE);
+    }
+
+    /**
+     * 计算指定日期的前一天
+     * @param date 一个日期
+     * @return 代表date前一天的日期
+     */
+    public static Date getPrevDay(Date date) {
+        return org.apache.commons.lang3.time.DateUtils.addDays(date, -1);
+    }
+
+    /**
+     * 计算指定日期的后一天
+     * @param date 一个日期
+     * @return 代表date后一天的日期
+     */
+    public static Date getNextDay(Date date) {
+        return org.apache.commons.lang3.time.DateUtils.addDays(date, 1);
+    }
+
+    /**
+     * 判断date1是否在date2之后，忽略时间部分
+     * @param date1 第一个日期
+     * @param date2 第二个日期
+     * @return 如果date1处于date2之后，返回true，否则返回false
+     */
+    public static boolean isDateAfter(Date date1, Date date2) {
+        Date theDate1 = org.apache.commons.lang3.time.DateUtils.truncate(date1,
+                Calendar.DATE);
+        Date theDate2 = org.apache.commons.lang3.time.DateUtils.truncate(date2,
+                Calendar.DATE);
+        return theDate1.after(theDate2);
+    }
+
+    /**
+     * 判断date1是否在date2之前，忽略时间部分
+     * @param date1 第一个日期
+     * @param date2 第二个日期
+     * @return 如果date1处于date2之前，返回true，否则返回false
+     */
+    public static boolean isDateBefore(Date date1, Date date2) {
+        return isDateAfter(date2, date1);
+    }
+
+    /**
+     * 判断time1是否在time2之后，忽略日期部分
+     * @param time1 第一个时间
+     * @param time2 第二个时间
+     * @return 如果time1位于time2之后，返回true，否则返回false
+     */
+    public static boolean isTimeAfter(Date time1, Date time2) {
+        Calendar calendar1 = Calendar.getInstance();
+        calendar1.setTime(time1);
+        calendar1.set(1900, 1, 1);
+        Calendar calendar2 = Calendar.getInstance();
+        calendar2.setTime(time2);
+        calendar2.set(1900, 1, 1);
+        return calendar1.after(calendar2);
+    }
+
+    /**
+     * 判断time1是否在time2之前，忽略日期部分
+     * @param time1 第一个时间
+     * @param time2 第二个时间
+     * @return 如果time1位于time2之前，返回true，否则返回false
+     */
+    public static boolean isTimeBefore(Date time1, Date time2) {
+        return isTimeAfter(time2, time1);
+    }
+
+    /**
+     * 判断两个日期是否同一天（忽略时间部分）
+     * @param date1 第一个日期
+     * @param date2 第二个日期
+     * @return 如果date1和date2代表相同的日期，返回true，否则返回false
+     */
+    public static boolean isSameDay(Date date1, Date date2) {
+        return org.apache.commons.lang3.time.DateUtils.isSameDay(date1, date2);
+    }
+
+    /**
+     * 判断两个日历天是否同一天（忽略时间部分）
+     * @param date1 第一个日期
+     * @param date2 第二个日期
+     * @return 如果date1和date2代表相同的日期，返回true，否则返回false
+     */
+    public static boolean isSameDay(Calendar date1, Calendar date2) {
+        return org.apache.commons.lang3.time.DateUtils.isSameDay(date1, date2);
+    }
+
+    /**
+     * 将字符串形式的日期表示解析为日期对象
+     * @param dateString 代表日期的字符串
+     * @return 一个日期
+     */
+    public static Date parseDate(String dateString) {
+        try {
+            return org.apache.commons.lang3.time.DateUtils.parseDate(
+                    dateString, new String[]{"yyyy-MM-dd", "yyyy-M-d",
+                            "yyyy-MM-d", "yyyy-M-dd"});
+        } catch (ParseException e) {
+            return null;
+        }
+    }
+
+    /**
+     * 将字符串形式的时间表示解析为时间对象
+     * @param timeString 代表时间的字符串
+     * @return 一个日期
+     */
+    public static Date parseTime(String timeString) {
+        try {
+            return org.apache.commons.lang3.time.DateUtils.parseDate(
+                    timeString, new String[]{"hh:mm:ss", "h:m:s", "hh:mm",
+                            "h:m"});
+        } catch (ParseException e) {
+            return null;
+        }
+    }
+
+    /**
+     * 将字符串形式的日期时间表示解析为时间对象
+     * @param timeString 代表时间的字符串
+     * @return 一个日期
+     */
+    public static Date parseDateTime(String timeString) {
+        try {
+            return org.apache.commons.lang3.time.DateUtils.parseDate(
+                    timeString, new String[]{"yyyy-MM-dd HH:mm:ss",
+                            "yyyy-M-d H:m:s", "yyyy-MM-dd H:m:s",
+                            "yyyy-M-d HH:mm:ss"});
+        } catch (ParseException e) {
+            return null;
+        }
+    }
+
+    /**
+     * 计算两个日期之间包含的星期X的天数。
+     * @param fromDate  起始日期
+     * @param toDate    结束日期
+     * @param dayOfWeek 星期，例如星期三，星期四
+     * @return 两个日期之间包含的星期X的数量
+     */
+    public static int getWeekDaysBetween(Date fromDate, Date toDate,
+                                         int dayOfWeek) {
+        int result = 0;
+        Date firstDate = getFirstWeekdayBetween(fromDate, toDate, dayOfWeek);
+        if (firstDate == null) {
+            return 0;
+        }
+        Calendar aDay = Calendar.getInstance();
+        aDay.setTime(firstDate);
+        while (aDay.getTime().before(toDate)) {
+            result++;
+            aDay.add(Calendar.DATE, DAYS_IN_A_WEEK);
+        }
+        return result;
+    }
+
+    /**
+     * 获取在两个日期之间的第一个星期X
+     * @param fromDate  起始日期
+     * @param toDate    结束日期
+     * @param dayOfWeek 星期，例如星期三，星期四
+     * @return 两个日期之间的第一个星期X
+     */
+    public static Date getFirstWeekdayBetween(Date fromDate, Date toDate,
+                                              int dayOfWeek) {
+        Calendar aDay = Calendar.getInstance();
+        aDay.setTime(fromDate);
+        while (aDay.getTime().before(toDate)) {
+            if (aDay.get(Calendar.DAY_OF_WEEK) == dayOfWeek) {
+                return aDay.getTime();
+            }
+            aDay.add(Calendar.DATE, 1);
+        }
+        return null;
+    }
+
+    /**
+     * 取得参数year指定的年份的总天数
+     * @param year 年份
+     * @return 当年的总天数
+     */
+    public static int getDaysInYear(int year) {
+        Calendar aDay = Calendar.getInstance();
+        aDay.set(year, 1, 1);
+        Date from = aDay.getTime();
+        aDay.set(year + 1, 1, 1);
+        Date to = aDay.getTime();
+        return getDayDiff(from, to);
+    }
+
+    /**
+     * 取得指定年月的总天数
+     * @param year  年份
+     * @param month 月份
+     * @return 当月的总天数
+     */
+    public static int getDaysInMonth(int year, int month) {
+        Calendar aDay = Calendar.getInstance();
+        aDay.set(year, month, 1);
+        Date from = aDay.getTime();
+        if (month == Calendar.DECEMBER) {
+            aDay.set(year + 1, Calendar.JANUARY, 1);
+        } else {
+            aDay.set(year, month + 1, 1);
+        }
+        Date to = aDay.getTime();
+        return getDayDiff(from, to);
+    }
+
+    /**
+     * 获得指定日期是当年的第几天
+     * @param date 一个日期
+     * @return 日期在当年中是第几天
+     */
+    public static int getDayOfYear(Date date) {
+        return getFieldValue(date, Calendar.DAY_OF_YEAR);
+    }
+
+    /**
+     * 获得指定日期是当月的第几天
+     * @param date 一个日期
+     * @return 日期在当月中是第几天
+     */
+    public static int getDayOfMonth(Date date) {
+        return getFieldValue(date, Calendar.DAY_OF_MONTH);
+    }
+
+    /**
+     * 获得指定日期是当周的第几天
+     * @param date 一个日期
+     * @return 日期在本周中是第几天
+     */
+    public static int getDayOfWeek(Date date) {
+        return getFieldValue(date, Calendar.DAY_OF_WEEK);
+    }
+
+    private static int getFieldValue(Date date, int field) {
+        if (date == null) {
+            throw new InvalidParameterException("date cannot be null!");
+        }
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(date);
+        return calendar.get(field);
+    }
+
+    /**
+     * 获得指定日期之后一段时期的日期。例如某日期之后3天的日期等。
+     * @param origDate 基准日期
+     * @param amount   时间数量
+     * @param timeUnit 时间单位，如年、月、日等。用Calendar中的常量代表
+     * @return 一个日期
+     */
+    public static final Date dateAfter(Date origDate, int amount, int timeUnit) {
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(origDate);
+        calendar.add(timeUnit, amount);
+        return calendar.getTime();
+    }
+
+    /**
+     * 获得指定日期之前一段时期的日期。例如某日期之前3天的日期等。
+     * @param origDate 基准日期
+     * @param amount   时间数量
+     * @param timeUnit 时间单位，如年、月、日等。用Calendar中的常量代表
+     * @return 一个日期
+     */
+    public static final Date dateBefore(Date origDate, int amount, int timeUnit) {
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(origDate);
+        calendar.add(timeUnit, -amount);
+        return calendar.getTime();
     }
 }

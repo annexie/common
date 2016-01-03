@@ -1,5 +1,6 @@
 package com.xuliugen.common.util.file;
 
+import com.xuliugen.common.util.date.DateUtils;
 import org.apache.commons.configuration.ConfigurationException;
 import org.apache.commons.configuration.PropertiesConfiguration;
 import org.apache.commons.configuration.reloading.FileChangedReloadingStrategy;
@@ -9,7 +10,6 @@ import org.apache.commons.io.FileUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import com.xuliugen.common.util.RunningMode;
-import com.xuliugen.common.util.date.DateUtil;
 
 import java.io.File;
 import java.io.IOException;
@@ -44,7 +44,7 @@ public class FileUploadUtil {
      * @return
      */
     public static String getYearMonthPath() {
-        return DateUtil.getYear() + "/" + DateUtil.getMonthInt() + "/";
+        return DateUtils.getYear() + "/" + DateUtils.getMonthInt() + "/";
     }
 
     /**
@@ -52,7 +52,7 @@ public class FileUploadUtil {
      * @return
      */
     public static String getYearMonthDayPath() {
-        return getYearMonthPath() + DateUtil.getDayInt() + "/";
+        return getYearMonthPath() + DateUtils.getDayInt() + "/";
     }
 
     /**
